@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgProvinciasCiu" table="scg_provincias_ciu" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgProvinciasCiuId">
+            <key-property name="scgProCodigo" type="short">
+                <column name="scg_pro_codigo" />
+            </key-property>
+            <key-property name="scgCiuCodigo" type="short">
+                <column name="scg_ciu_codigo" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgProvincias" class="com.maserven.modelos.ScgProvincias" update="false" insert="false" fetch="select">
+            <column name="scg_pro_codigo" not-null="true" />
+        </many-to-one>
+        <property name="scgCiuDescripcion" type="string">
+            <column name="scg_ciu_descripcion" length="30" not-null="true" />
+        </property>
+        <set name="scgEmpresases" table="scg_empresas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_epr_codigo_pro" not-null="true" />
+                <column name="scg_epr_codigo_ciu" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgEmpresas" />
+        </set>
+    </class>
+</hibernate-mapping>

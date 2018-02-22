@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgUsuariosEpr" table="scg_usuarios_epr" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgUsuariosEprId">
+            <key-property name="scgUsuCodigo" type="string">
+                <column name="scg_usu_codigo" length="15" />
+            </key-property>
+            <key-property name="scgEprCodigo" type="string">
+                <column name="scg_epr_codigo" length="2" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgEmpresas" class="com.maserven.modelos.ScgEmpresas" update="false" insert="false" fetch="select">
+            <column name="scg_epr_codigo" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="scgPerfilesCab" class="com.maserven.modelos.ScgPerfilesCab" fetch="select">
+            <column name="scg_per_codigo" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="scgUsuarios" class="com.maserven.modelos.ScgUsuarios" update="false" insert="false" fetch="select">
+            <column name="scg_usu_codigo" length="15" not-null="true" />
+        </many-to-one>
+        <property name="scgUxeActualizaFec" type="timestamp">
+            <column name="scg_uxe_actualiza_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgUxeActualizaUsr" type="string">
+            <column name="scg_uxe_actualiza_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgUxeCreacionFec" type="timestamp">
+            <column name="scg_uxe_creacion_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgUxeCreacionUsr" type="string">
+            <column name="scg_uxe_creacion_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgUxeEstado" type="char">
+            <column name="scg_uxe_estado" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

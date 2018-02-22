@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgMensajes" table="scg_mensajes" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgMensajesId">
+            <key-property name="scgMenAnio" type="short">
+                <column name="scg_men_anio" />
+            </key-property>
+            <key-property name="scgUsuCodigo" type="string">
+                <column name="scg_usu_codigo" length="15" />
+            </key-property>
+            <key-property name="scgMenNumero" type="long">
+                <column name="scg_men_numero" precision="10" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgProgramas" class="com.maserven.modelos.ScgProgramas" fetch="select">
+            <column name="scg_prg_codigo" length="4" />
+        </many-to-one>
+        <many-to-one name="scgUsuarios" class="com.maserven.modelos.ScgUsuarios" update="false" insert="false" fetch="select">
+            <column name="scg_usu_codigo" length="15" not-null="true" />
+        </many-to-one>
+        <property name="scgMenTipo" type="short">
+            <column name="scg_men_tipo" not-null="true" />
+        </property>
+        <property name="scgMenAutomatico" type="boolean">
+            <column name="scg_men_automatico" not-null="true" />
+        </property>
+        <property name="scgMenPrioridad" type="short">
+            <column name="scg_men_prioridad" not-null="true" />
+        </property>
+        <property name="scgMenFecha" type="timestamp">
+            <column name="scg_men_fecha" length="23" not-null="true" />
+        </property>
+        <property name="scgMenAsunto" type="string">
+            <column name="scg_men_asunto" length="500" not-null="true" />
+        </property>
+        <property name="scgMenTexto" type="string">
+            <column name="scg_men_texto" not-null="true" />
+        </property>
+        <property name="scgMenAnioTrx" type="java.lang.Short">
+            <column name="scg_men_anio_trx" />
+        </property>
+        <property name="scgMenNumeroTrx" type="java.lang.Integer">
+            <column name="scg_men_numero_trx" />
+        </property>
+        <set name="scgMensajesDesesForIscgMensajesDes1" table="scg_mensajes_des" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_men_anio" not-null="true" />
+                <column name="scg_usu_codigo" length="15" not-null="true" />
+                <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgMensajesDes" />
+        </set>
+        <set name="scgMensajesDesesForIscgMensajesDes2" table="scg_mensajes_des" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_men_anio" not-null="true" />
+                <column name="scg_des_codigo_usu" length="15" not-null="true" />
+                <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgMensajesDes" />
+        </set>
+        <set name="scgMensajesAdjs" table="scg_mensajes_adj" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_men_anio" not-null="true" />
+                <column name="scg_usu_codigo" length="15" not-null="true" />
+                <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgMensajesAdj" />
+        </set>
+    </class>
+</hibernate-mapping>

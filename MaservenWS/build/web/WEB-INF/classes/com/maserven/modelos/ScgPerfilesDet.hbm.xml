@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgPerfilesDet" table="scg_perfiles_det" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgPerfilesDetId">
+            <key-property name="scgPerCodigo" type="string">
+                <column name="scg_per_codigo" length="2" />
+            </key-property>
+            <key-property name="scgPrgCodigo" type="string">
+                <column name="scg_prg_codigo" length="4" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgPerfilesCab" class="com.maserven.modelos.ScgPerfilesCab" update="false" insert="false" fetch="select">
+            <column name="scg_per_codigo" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="scgProgramas" class="com.maserven.modelos.ScgProgramas" update="false" insert="false" fetch="select">
+            <column name="scg_prg_codigo" length="4" not-null="true" />
+        </many-to-one>
+        <property name="scgAccNuevo" type="boolean">
+            <column name="scg_acc_nuevo" not-null="true" />
+        </property>
+        <property name="scgAccModificar" type="boolean">
+            <column name="scg_acc_modificar" not-null="true" />
+        </property>
+        <property name="scgAccAnular" type="boolean">
+            <column name="scg_acc_anular" not-null="true" />
+        </property>
+        <property name="scgAccProcesar" type="boolean">
+            <column name="scg_acc_procesar" not-null="true" />
+        </property>
+        <property name="scgAccImprimir" type="boolean">
+            <column name="scg_acc_imprimir" not-null="true" />
+        </property>
+        <property name="scgAccConsultar" type="boolean">
+            <column name="scg_acc_consultar" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

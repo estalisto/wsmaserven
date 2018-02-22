@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgModulos" table="scg_modulos" catalog="db_config" optimistic-lock="version">
+        <id name="scgModCodigo" type="char">
+            <column name="scg_mod_codigo" length="1" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgModDescripcion" type="string">
+            <column name="scg_mod_descripcion" length="30" not-null="true" />
+        </property>
+        <property name="scgModEstado" type="char">
+            <column name="scg_mod_estado" length="1" not-null="true" />
+        </property>
+        <property name="scgModFechaAct" type="timestamp">
+            <column name="scg_mod_fecha_act" length="23" not-null="true" />
+        </property>
+        <property name="scgModFechaVal" type="timestamp">
+            <column name="scg_mod_fecha_val" length="23" not-null="true" />
+        </property>
+        <property name="scgModSerialAct" type="string">
+            <column name="scg_mod_serial_act" length="60" not-null="true" />
+        </property>
+        <property name="scgModSerialVal" type="string">
+            <column name="scg_mod_serial_val" length="60" not-null="true" />
+        </property>
+        <set name="scgProgramases" table="scg_programas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_mod_codigo" length="1" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgProgramas" />
+        </set>
+    </class>
+</hibernate-mapping>

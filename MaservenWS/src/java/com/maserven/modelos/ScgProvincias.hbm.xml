@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgProvincias" table="scg_provincias" catalog="db_config" optimistic-lock="version">
+        <id name="scgProCodigo" type="short">
+            <column name="scg_pro_codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgProDescripcion" type="string">
+            <column name="scg_pro_descripcion" length="30" not-null="true" />
+        </property>
+        <set name="scgProvinciasCius" table="scg_provincias_ciu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_pro_codigo" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgProvinciasCiu" />
+        </set>
+    </class>
+</hibernate-mapping>

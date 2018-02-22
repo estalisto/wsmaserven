@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgProgramas" table="scg_programas" catalog="db_config" optimistic-lock="version">
+        <id name="scgPrgCodigo" type="string">
+            <column name="scg_prg_codigo" length="4" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="scgModulos" class="com.maserven.modelos.ScgModulos" fetch="select">
+            <column name="scg_mod_codigo" length="1" />
+        </many-to-one>
+        <property name="scgPrgDescripcion" type="string">
+            <column name="scg_prg_descripcion" length="60" not-null="true" />
+        </property>
+        <property name="scgPrgAbreviatura" type="string">
+            <column name="scg_prg_abreviatura" length="30" not-null="true" />
+        </property>
+        <property name="scgPrgTipo" type="char">
+            <column name="scg_prg_tipo" length="1" not-null="true" />
+        </property>
+        <property name="scgPrgObjeto" type="string">
+            <column name="scg_prg_objeto" length="30" not-null="true" />
+        </property>
+        <property name="scgPrgPrograma" type="string">
+            <column name="scg_prg_programa" length="30" not-null="true" />
+        </property>
+        <set name="scgPerfilesDets" table="scg_perfiles_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_prg_codigo" length="4" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgPerfilesDet" />
+        </set>
+        <set name="scgReporteses" table="scg_reportes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_prg_codigo" length="4" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgReportes" />
+        </set>
+        <set name="scgMensajeses" table="scg_mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_prg_codigo" length="4" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgMensajes" />
+        </set>
+    </class>
+</hibernate-mapping>

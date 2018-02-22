@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgConfig" table="scg_config" catalog="db_config" optimistic-lock="version">
+        <id name="scgSisCodigo" type="char">
+            <column name="scg_sis_codigo" length="1" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgSisNombre" type="string">
+            <column name="scg_sis_nombre" length="30" not-null="true" />
+        </property>
+        <property name="scgSisVersion" type="string">
+            <column name="scg_sis_version" length="10" not-null="true" />
+        </property>
+        <property name="scgSisDbms" type="char">
+            <column name="scg_sis_dbms" length="1" not-null="true" />
+        </property>
+        <property name="scgSisLicencias" type="short">
+            <column name="scg_sis_licencias" not-null="true" />
+        </property>
+        <property name="scgSisPaginaWeb" type="string">
+            <column name="scg_sis_pagina_web" length="1000" not-null="true" />
+        </property>
+        <property name="scgSisMensajeria" type="boolean">
+            <column name="scg_sis_mensajeria" not-null="true" />
+        </property>
+        <property name="scgSisServer" type="string">
+            <column name="scg_sis_server" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

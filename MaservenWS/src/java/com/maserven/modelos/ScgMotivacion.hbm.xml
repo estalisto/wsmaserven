@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgMotivacion" table="scg_motivacion" catalog="db_config" optimistic-lock="version">
+        <id name="scgMotCodigo" type="string">
+            <column name="scg_mot_codigo" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgMotEstado" type="char">
+            <column name="scg_mot_estado" length="1" not-null="true" />
+        </property>
+        <property name="scgMotFrase" type="string">
+            <column name="scg_mot_frase" length="250" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

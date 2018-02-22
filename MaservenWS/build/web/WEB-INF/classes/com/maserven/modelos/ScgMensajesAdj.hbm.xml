@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgMensajesAdj" table="scg_mensajes_adj" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgMensajesAdjId">
+            <key-property name="scgMenAnio" type="short">
+                <column name="scg_men_anio" />
+            </key-property>
+            <key-property name="scgUsuCodigo" type="string">
+                <column name="scg_usu_codigo" length="15" />
+            </key-property>
+            <key-property name="scgMenNumero" type="long">
+                <column name="scg_men_numero" precision="10" scale="0" />
+            </key-property>
+            <key-property name="scgFilSecuencia" type="int">
+                <column name="scg_fil_secuencia" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgMensajes" class="com.maserven.modelos.ScgMensajes" update="false" insert="false" fetch="select">
+            <column name="scg_men_anio" not-null="true" />
+            <column name="scg_usu_codigo" length="15" not-null="true" />
+            <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="scgFilNombre" type="string">
+            <column name="scg_fil_nombre" length="60" not-null="true" />
+        </property>
+        <property name="scgFilExtension" type="string">
+            <column name="scg_fil_extension" length="4" not-null="true" />
+        </property>
+        <property name="scgFilObjeto" type="binary">
+            <column name="scg_fil_objeto" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

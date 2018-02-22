@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgEmpresas" table="scg_empresas" catalog="db_config" optimistic-lock="version">
+        <id name="scgEprCodigo" type="string">
+            <column name="scg_epr_codigo" length="2" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="scgProvinciasCiu" class="com.maserven.modelos.ScgProvinciasCiu" fetch="select">
+            <column name="scg_epr_codigo_pro" not-null="true" />
+            <column name="scg_epr_codigo_ciu" not-null="true" />
+        </many-to-one>
+        <property name="scgEprRuc" type="string">
+            <column name="scg_epr_ruc" length="13" not-null="true" />
+        </property>
+        <property name="scgEprEstado" type="char">
+            <column name="scg_epr_estado" length="1" not-null="true" />
+        </property>
+        <property name="scgEprDescripcion" type="string">
+            <column name="scg_epr_descripcion" length="60" not-null="true" />
+        </property>
+        <property name="scgEprTelefono1" type="string">
+            <column name="scg_epr_telefono1" length="12" not-null="true" />
+        </property>
+        <property name="scgEprTelefono2" type="string">
+            <column name="scg_epr_telefono2" length="12" not-null="true" />
+        </property>
+        <property name="scgEprDireccion" type="string">
+            <column name="scg_epr_direccion" length="120" not-null="true" />
+        </property>
+        <property name="scgEprPaginaWeb" type="string">
+            <column name="scg_epr_pagina_web" length="1000" not-null="true" />
+        </property>
+        <property name="scgEprEmail" type="string">
+            <column name="scg_epr_email" length="60" not-null="true" />
+        </property>
+        <property name="scgEprLogo" type="binary">
+            <column name="scg_epr_logo" />
+        </property>
+        <property name="scgEprBaseDatos" type="string">
+            <column name="scg_epr_base_datos" length="15" not-null="true" />
+        </property>
+        <property name="scgEprEmailMsj" type="string">
+            <column name="scg_epr_email_msj" length="30" not-null="true" />
+        </property>
+        <property name="scgEprEmailHost" type="string">
+            <column name="scg_epr_email_host" length="30" not-null="true" />
+        </property>
+        <property name="scgEprCreacionUsr" type="string">
+            <column name="scg_epr_creacion_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgEprCreacionFec" type="timestamp">
+            <column name="scg_epr_creacion_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgEprActualizaUsr" type="string">
+            <column name="scg_epr_actualiza_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgEprActualizaFec" type="timestamp">
+            <column name="scg_epr_actualiza_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgEprTipoEmp" type="char">
+            <column name="scg_epr_tipo_emp" length="1" not-null="true" />
+        </property>
+        <property name="scgEprExtension" type="string">
+            <column name="scg_epr_extension" length="5" />
+        </property>
+        <property name="scgEprDescripcionCom" type="string">
+            <column name="scg_epr_descripcion_com" length="60" not-null="true" />
+        </property>
+        <property name="scgEprNumeroCon" type="string">
+            <column name="scg_epr_numero_con" length="6" />
+        </property>
+        <property name="scgEprContribuyenteEsp" type="boolean">
+            <column name="scg_epr_contribuyente_esp" not-null="true" />
+        </property>
+        <property name="scgEprVentasTra" type="boolean">
+            <column name="scg_epr_ventas_tra" not-null="true" />
+        </property>
+        <set name="scgUsuariosEprs" table="scg_usuarios_epr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_epr_codigo" length="2" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgUsuariosEpr" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgMensajesDes" table="scg_mensajes_des" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgMensajesDesId">
+            <key-property name="scgMenAnio" type="short">
+                <column name="scg_men_anio" />
+            </key-property>
+            <key-property name="scgUsuCodigo" type="string">
+                <column name="scg_usu_codigo" length="15" />
+            </key-property>
+            <key-property name="scgMenNumero" type="long">
+                <column name="scg_men_numero" precision="10" scale="0" />
+            </key-property>
+            <key-property name="scgDesSecuencia" type="int">
+                <column name="scg_des_secuencia" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgMensajesByIscgMensajesDes1" class="com.maserven.modelos.ScgMensajes" update="false" insert="false" fetch="select">
+            <column name="scg_men_anio" not-null="true" />
+            <column name="scg_usu_codigo" length="15" not-null="true" />
+            <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="scgMensajesByIscgMensajesDes2" class="com.maserven.modelos.ScgMensajes" update="false" insert="false" fetch="select">
+            <column name="scg_men_anio" not-null="true" />
+            <column name="scg_des_codigo_usu" length="15" not-null="true" />
+            <column name="scg_men_numero" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="scgDesCodigoEpr" type="string">
+            <column name="scg_des_codigo_epr" length="2" />
+        </property>
+        <property name="scgDesCopia" type="boolean">
+            <column name="scg_des_copia" not-null="true" />
+        </property>
+        <property name="scgDesEntregado" type="boolean">
+            <column name="scg_des_entregado" not-null="true" />
+        </property>
+        <property name="scgDesFechaEntregado" type="timestamp">
+            <column name="scg_des_fecha_entregado" length="23" />
+        </property>
+        <property name="scgDesLeido" type="boolean">
+            <column name="scg_des_leido" not-null="true" />
+        </property>
+        <property name="scgDesFechaLeido" type="timestamp">
+            <column name="scg_des_fecha_leido" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

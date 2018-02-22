@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgReportes" table="scg_reportes" catalog="db_config" optimistic-lock="version">
+        <composite-id name="id" class="com.maserven.modelos.ScgReportesId">
+            <key-property name="scgPrgCodigo" type="string">
+                <column name="scg_prg_codigo" length="4" />
+            </key-property>
+            <key-property name="scgRepCodigo" type="string">
+                <column name="scg_rep_codigo" length="2" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="scgProgramas" class="com.maserven.modelos.ScgProgramas" update="false" insert="false" fetch="select">
+            <column name="scg_prg_codigo" length="4" not-null="true" />
+        </many-to-one>
+        <property name="scgRepDescripcion" type="string">
+            <column name="scg_rep_descripcion" length="60" not-null="true" />
+        </property>
+        <property name="scgRepObjeto" type="string">
+            <column name="scg_rep_objeto" length="30" not-null="true" />
+        </property>
+        <property name="scgRepTipo" type="short">
+            <column name="scg_rep_tipo" not-null="true" />
+        </property>
+        <property name="scgRepPrincipal" type="boolean">
+            <column name="scg_rep_principal" not-null="true" />
+        </property>
+        <property name="scgRepActivo" type="boolean">
+            <column name="scg_rep_activo" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgPerfilesCab" table="scg_perfiles_cab" catalog="db_config" optimistic-lock="version">
+        <id name="scgPerCodigo" type="string">
+            <column name="scg_per_codigo" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgPerDescripcion" type="string">
+            <column name="scg_per_descripcion" length="60" not-null="true" />
+        </property>
+        <property name="scgPerEstado" type="char">
+            <column name="scg_per_estado" length="1" not-null="true" />
+        </property>
+        <property name="scgPerPendiente" type="boolean">
+            <column name="scg_per_pendiente" not-null="true" />
+        </property>
+        <set name="scgPerfilesDets" table="scg_perfiles_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_per_codigo" length="2" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgPerfilesDet" />
+        </set>
+        <set name="scgUsuariosEprs" table="scg_usuarios_epr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_per_codigo" length="2" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgUsuariosEpr" />
+        </set>
+    </class>
+</hibernate-mapping>

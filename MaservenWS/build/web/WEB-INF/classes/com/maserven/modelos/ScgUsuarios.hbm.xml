@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 20, 2017 3:07:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.maserven.modelos.ScgUsuarios" table="scg_usuarios" catalog="db_config" optimistic-lock="version">
+        <id name="scgUsuCodigo" type="string">
+            <column name="scg_usu_codigo" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="scgUsuClave" type="string">
+            <column name="scg_usu_clave" length="15" not-null="true" />
+        </property>
+        <property name="scgUsuApellidos" type="string">
+            <column name="scg_usu_apellidos" length="30" not-null="true" />
+        </property>
+        <property name="scgUsuNombres" type="string">
+            <column name="scg_usu_nombres" length="30" not-null="true" />
+        </property>
+        <property name="scgUsuEstado" type="char">
+            <column name="scg_usu_estado" length="1" not-null="true" />
+        </property>
+        <property name="scgUsuTipo" type="char">
+            <column name="scg_usu_tipo" length="1" not-null="true" />
+        </property>
+        <property name="scgUsuFuncion" type="char">
+            <column name="scg_usu_funcion" length="1" not-null="true" />
+        </property>
+        <property name="scgUsuEmail" type="string">
+            <column name="scg_usu_email" length="30" not-null="true" />
+        </property>
+        <property name="scgUsuActualizaFec" type="timestamp">
+            <column name="scg_usu_actualiza_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgUsuActualizaUsr" type="string">
+            <column name="scg_usu_actualiza_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgUsuCreacionFec" type="timestamp">
+            <column name="scg_usu_creacion_fec" length="23" not-null="true" />
+        </property>
+        <property name="scgUsuCreacionUsr" type="string">
+            <column name="scg_usu_creacion_usr" length="15" not-null="true" />
+        </property>
+        <property name="scgUsuValidaSesion" type="boolean">
+            <column name="scg_usu_valida_sesion" not-null="true" />
+        </property>
+        <set name="scgMensajeses" table="scg_mensajes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_usu_codigo" length="15" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgMensajes" />
+        </set>
+        <set name="scgUsuariosEprs" table="scg_usuarios_epr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="scg_usu_codigo" length="15" not-null="true" />
+            </key>
+            <one-to-many class="com.maserven.modelos.ScgUsuariosEpr" />
+        </set>
+    </class>
+</hibernate-mapping>
