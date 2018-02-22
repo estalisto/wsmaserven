@@ -187,7 +187,7 @@ public class MisPedidosDAO {
             conMaster.cierraConexion();
             return valor;  
             }catch (SQLException ex) {
-                System.err.println( ex.getMessage() );;
+                System.out.println("Error al ejecutar el proceso:exec dbo.SP_CONSULTA_PED_JSON "+email+";"+ ex.getMessage() );;
            return valor;  
              } 
                 
